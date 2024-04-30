@@ -1,46 +1,43 @@
 package br.edu.up.Academia.Instrutor;
 
-  import java.util.Scanner;
+import java.util.Scanner;
+import java.util.TreeSet;
 
 public class Instrutor {
 
     private String nome;
+    private static final TreeSet<String> instrutores = new TreeSet<>();
 
-    public void Instrutores(){
+    static {
+        instrutores.add("Marcelo");
+        instrutores.add("Rhafael");
+        instrutores.add("Evandro");
+        instrutores.add("Andre");
+        instrutores.add("Xis");
+    }
+
+    public void Instrutores() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Escolha seu instrutor:");
-        System.out.println("1. Marcelo");
-        System.out.println("2. Rhafael");
-        System.out.println("3. Evandro");
-        System.out.println("4. Andre");
-        System.out.println("5. Xis");
 
-        int opcao = scanner.nextInt();scanner.nextLine();
-
-        switch (opcao) {
-            case 1:
-                this.nome = "Marcelo";
-                break;
-            case 2:
-                this.nome = "Rhafael";
-                break;
-            case 3:
-                this.nome = "Evandro";
-                break;
-            case 4:
-                this.nome = "Andre";
-                break;
-            case 5:
-                this.nome = "Xis";
-                break;
-            default:
-                System.out.println("ERRO!!!");
-                break;
+        int i = 1;
+        for (String instrutor : instrutores) {
+            System.out.printf("%d. %s\n", i++, instrutor);
         }
 
-        if (this.nome != null) {
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+
+        if (opcao >= 1 && opcao <= instrutores.size()) {
+            this.nome = (String) instrutores.toArray()[opcao - 1];
             System.out.printf("Seu Instrutor é : %s\n", this.nome);
+        } else {
+            System.out.println("ERRO!!!");
         }
+    }
+
+    public String getNome() {
+        return nome;
     }
 }
