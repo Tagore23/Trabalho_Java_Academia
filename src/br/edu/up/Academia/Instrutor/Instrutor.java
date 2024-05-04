@@ -5,7 +5,7 @@ import java.util.TreeSet;
 
 public class Instrutor {
 
-    private String nome;
+    private static String nomeInstrutor;
     private static final TreeSet<String> instrutores = new TreeSet<>();
 
     static {
@@ -16,11 +16,15 @@ public class Instrutor {
         instrutores.add("Xis");
     }
 
+    public static String getNomeInstrutor() {
+        return nomeInstrutor;
+    }
+
     public void escolherInstrutor() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Escolha seu instrutor:");
-
+    //For para escolher o instrutor
         int i = 1;
         for (String instrutor : instrutores) {
             System.out.println(i + ". " + instrutor);
@@ -36,9 +40,8 @@ public class Instrutor {
             }
         } while (i < 1 || i > 5);
 
-        this.nome = (String) instrutores.toArray()[i - 1];
-        System.out.println("Seu Instrutor é: " + this.nome);
+        this.nomeInstrutor = (String) instrutores.toArray()[i - 1];
+        System.out.println("Seu Instrutor é: " + this.nomeInstrutor);
 
-        scanner.close();
     }
 }

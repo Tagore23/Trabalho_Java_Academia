@@ -1,6 +1,8 @@
 package br.edu.up.Academia.Treino;
 
 import br.edu.up.Academia.Equipamento.Equipamento;
+import br.edu.up.Academia.FileManager.FileManager;
+import br.edu.up.Academia.Instrutor.Instrutor;
 
 import java.util.*;
 
@@ -11,7 +13,7 @@ public class Treino {
     private String tipoTreino;
 
     public Treino() {
-        this.tipoTreino = tipoTreino;
+        this.tipoTreino = "Treino Padrão";;
     }
 
     public void EscolherTreino() {
@@ -29,7 +31,27 @@ public class Treino {
             System.out.println("Dia " + dia + ":");
             System.out.println("Tipo de Treino: " + tipoTreino);
             System.out.println("Equipamentos: " + equipamento.getEquipamentosPorTreino(tipoTreino));
-            System.out.println();
+            System.out.println("Instrutor: " + Instrutor.getNomeInstrutor());
+
+            escreverDetalhesDoTreino(dia);
         }
     }
+    private void escreverDetalhesDoTreino(int dia) {
+        FileManager fileManager = new FileManager();
+        Equipamento equipamento = new Equipamento(); // Criar uma instância de Equipamento
+        List<String> equipamentos = equipamento.getEquipamentosPorTreino(tipoTreino); // Obter a lista de equipamentos
+
+        // Converter a lista de equipamentos para um array de strings
+        String[] equipamentosArray = equipamentos.toArray(new String[equipamentos.size()]);
+
+        // Construir os detalhes do treino
+        String detalhes = "Treino do dia " + dia + ":\n" +
+                "Tipo de Treino: " + tipoTreino + "\n" +
+                "Equipamentos: " + Arrays.toString(equipamentosArray) + "\n" +
+                "Instrutor: " + Instrutor.getNomeInstrutor() + "\n\n";
+
+        // Escrever os detalhes no arquivo
+        fileManager.escreverDetalhes("treinos.txt", detalhes);
+    }
+
 }

@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Equipamento {
 
+
     private Map<String, List<String>> equipamentosPorTreino;
     //inicia um hashmap para que dentro de TREINO o treino 1 utilize o equipamento1
     public Equipamento() {
@@ -25,7 +26,7 @@ public class Equipamento {
         );
         equipamentosPorTreino.put("Treino 3", equipamentosTreino3);
     }
-
+    // Retorna a lista de equipamentos correspondente ao tipo de treino ou uma lista vazia se o tipo de treino não existir
     public List<String> getEquipamentosPorTreino(String tipoTreino) {
         return equipamentosPorTreino.getOrDefault(tipoTreino, Collections.emptyList());
     }
