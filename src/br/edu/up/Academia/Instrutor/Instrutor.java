@@ -16,28 +16,29 @@ public class Instrutor {
         instrutores.add("Xis");
     }
 
-    public void Instrutores() {
+    public void escolherInstrutor() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Escolha seu instrutor:");
 
         int i = 1;
         for (String instrutor : instrutores) {
-            System.out.printf("%d. %s\n", i++, instrutor);
+            System.out.println(i + ". " + instrutor);
+            i++;
         }
 
-        int opcao = scanner.nextInt();
-        scanner.nextLine();
+        int opcao;
+        do {i = scanner.nextInt();
+            scanner.nextLine();
 
-        if (opcao >= 1 && opcao <= instrutores.size()) {
-            this.nome = (String) instrutores.toArray()[opcao - 1];
-            System.out.printf("Seu Instrutor é : %s\n", this.nome);
-        } else {
-            System.out.println("ERRO!!!");
-        }
-    }
+            if (i < 1 || i > 5) {
+                System.out.println("Erro.");
+            }
+        } while (i < 1 || i > 5);
 
-    public String getNome() {
-        return nome;
+        this.nome = (String) instrutores.toArray()[i - 1];
+        System.out.println("Seu Instrutor é: " + this.nome);
+
+        scanner.close();
     }
 }
