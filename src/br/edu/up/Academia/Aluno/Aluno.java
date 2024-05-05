@@ -4,6 +4,7 @@ import br.edu.up.Academia.FileManager.FileManager;
 
 import java.util.Scanner;
 
+//Mostra os dados que serão pedidos
 public class Aluno {
     private String nome;
     private int idade;
@@ -11,12 +12,12 @@ public class Aluno {
     private double telefone;
     private double peso;
     private String sexo;
-
+//Método para cadastrar o aluno
     public static void cadastrarAluno() {
         Scanner scanner = new Scanner(System.in);
         DadosAluno dados = new DadosAluno();
         dados.lerDados();
-
+//Lista os dados do aluno
         System.out.println("Aluno cadastrado com sucesso:");
         System.out.println("Nome: " + dados.getNome());
         System.out.println("Sexo: " + dados.getSexo());
@@ -28,12 +29,12 @@ public class Aluno {
         FileManager fileManager = new FileManager();
         fileManager.escreverDetalhes("cadastros.txt", "Cadastro de Aluno - Nome: " + dados.getNome() + ", Sexo: " + dados.getSexo() + ", Idade: " + dados.getIdade() + ", E-mail: " + dados.getEmail() + ", Telefone: " + dados.getTelefone() + ", Peso: " + dados.getPeso());
     }
-
+//Classe para armazenar os dados
     private static class DadosAluno {
         private String nome, email, sexo;
         private int idade, telefone;
         private double peso;
-
+//Método para ler os dados
         public void lerDados() {
             Scanner scanner = new Scanner(System.in);
 
@@ -58,7 +59,7 @@ public class Aluno {
             this.peso = scanner.nextDouble();
             scanner.nextLine();
         }
-
+//Retorna os dados do aluno
         public String getNome() {
             return nome;
         }
