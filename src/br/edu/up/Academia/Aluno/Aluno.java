@@ -1,87 +1,48 @@
 package br.edu.up.Academia.Aluno;
 
 import br.edu.up.Academia.FileManager.FileManager;
-
 import java.util.Scanner;
 
 //Mostra os dados que serão pedidos
 public class Aluno {
-    private String nome;
-    private int idade;
-    private String email;
-    private double telefone;
-    private double peso;
-    private String sexo;
-//Método para cadastrar o aluno
-    public static void cadastrarAluno() {
-        Scanner scanner = new Scanner(System.in);
-        DadosAluno dados = new DadosAluno();
-        dados.lerDados();
-//Lista os dados do aluno
-        System.out.println("Aluno cadastrado com sucesso:");
-        System.out.println("Nome: " + dados.getNome());
-        System.out.println("Sexo: " + dados.getSexo());
-        System.out.println("Idade: " + dados.getIdade());
-        System.out.println("E-mail: " + dados.getEmail());
-        System.out.println("Telefone: " + dados.getTelefone());
-        System.out.println("Peso: " + dados.getPeso());
 
-        FileManager fileManager = new FileManager();
-        fileManager.escreverDetalhes("cadastros.txt", "Cadastro de Aluno - Nome: " + dados.getNome() + ", Sexo: " + dados.getSexo() + ", Idade: " + dados.getIdade() + ", E-mail: " + dados.getEmail() + ", Telefone: " + dados.getTelefone() + ", Peso: " + dados.getPeso());
+    private String nome, email, sexo;
+    private Integer idade;
+    private double telefone, peso;
+
+    //Método para cadastrar o aluno
+    public Aluno(String nome, Integer idade, String email, double telefone, double peso, String sexo) {
+        this.nome = nome;
+        this.idade = idade;
+        this.email = email;
+        this.telefone = telefone;
+        this.peso = peso;
+        this.sexo = sexo;
     }
-//Classe para armazenar os dados
-    private static class DadosAluno {
-        private String nome, email, sexo;
-        private int idade, telefone;
-        private double peso;
-//Método para ler os dados
-        public void lerDados() {
-            Scanner scanner = new Scanner(System.in);
 
-            System.out.print("Nome: ");
-            this.nome = scanner.nextLine();
-
-            System.out.print("Sexo: ");
-            this.sexo = scanner.nextLine();
-
-            System.out.print("Idade: ");
-            this.idade = scanner.nextInt();
-            scanner.nextLine();
-
-            System.out.print("E-mail: ");
-            this.email = scanner.nextLine();
-
-            System.out.print("Telefone: ");
-            this.telefone = scanner.nextInt();
-            scanner.nextLine();
-
-            System.out.print("Peso: ");
-            this.peso = scanner.nextDouble();
-            scanner.nextLine();
-        }
 //Retorna os dados do aluno
-        public String getNome() {
-            return nome;
-        }
 
-        public String getSexo() {
-            return sexo;
-        }
+    public String getNome() {
+        return nome;
+    }
 
-        public int getIdade() {
-            return idade;
-        }
+    public String getSexo() {
+        return sexo;
+    }
 
-        public String getEmail() {
-            return email;
-        }
+    public int getIdade() {
+        return idade;
+    }
 
-        public double getTelefone() {
-            return telefone;
-        }
+    public String getEmail() {
+        return email;
+    }
 
-        public double getPeso() {
-            return peso;
-        }
+    public double getTelefone() {
+        return telefone;
+    }
+
+    public double getPeso() {
+        return peso;
     }
 }
