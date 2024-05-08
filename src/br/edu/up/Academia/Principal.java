@@ -25,7 +25,7 @@ public class Principal {
 
             switch (escolha) {
                 case 1:
-                    cadastrarAluno();
+                    cadastrarAluno(args);
                     break;
                 case 2:
                     escolherInstrutor();
@@ -46,9 +46,46 @@ public class Principal {
         } while (escolha != 5);
     }
 
-    private static void cadastrarAluno() {
-        Aluno aluno = new Aluno();
-        aluno.cadastrarAluno();
+   //Método para ler os dados do Aluno
+
+    public static void cadastrarAluno(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Cadastro de Aluno");
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+
+        System.out.print("Sexo: ");
+        String sexo = scanner.nextLine();
+
+        System.out.print("Idade: ");
+        int idade = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("E-mail: ");
+        String email = scanner.nextLine();
+
+        System.out.print("Telefone: ");
+        double telefone = scanner.nextDouble();
+        scanner.nextLine();
+
+        System.out.print("Peso: ");
+        double peso = scanner.nextDouble();
+        scanner.nextLine();
+
+        Aluno aluno = new Aluno(nome, idade, email, telefone, peso, sexo);
+
+        //Lista os dados do aluno
+        System.out.println("Aluno cadastrado com sucesso:");
+        System.out.println("Nome: " + aluno.getNome());
+        System.out.println("Sexo: " + aluno.getSexo());
+        System.out.println("Idade: " + aluno.getIdade());
+        System.out.println("E-mail: " + aluno.getEmail());
+        System.out.println("Telefone: " + aluno.getTelefone());
+        System.out.println("Peso: " + aluno.getPeso() + " Kg");
+
+        FileManager fileManager = new FileManager();
+        fileManager.escreverDetalhes("cadastros.txt", "Cadastro de Aluno - Nome: " + aluno.getNome() + ", Sexo: " + aluno.getSexo() + ", Idade: " + aluno.getIdade() + ", E-mail: " + aluno.getEmail() + ", Telefone: " + aluno.getTelefone() + ", Peso: " + aluno.getPeso());
     }
 
     private static void escolherInstrutor() {
